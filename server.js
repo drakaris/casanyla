@@ -41,10 +41,8 @@ db.once('open', function() {
 /*****************
  * Server Routes *
  ****************/
-var root = require('./routes/root');
-var setup = require('./routes/setup');
-app.use('/', root);
-app.use('/setup', setup);
+app.use('/', require('./routes/root'));
+app.use('/setup', require('./routes/setup'));
 
 // Start Server
 app.listen(port, function() {
