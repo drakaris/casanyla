@@ -62,7 +62,7 @@ app.use(function(req, res, next) {
   var oneof = false;
   res.header('Access-Control-Allow-Credentials', true);
   if (req.headers.origin) { //req.headers.origin.match(/whateverDomainYouWantToWhitelist/g) ) {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Origin', 'http://casanyla.com');
     oneof = true;
   }
   if (req.headers['access-control-request-method']) {
