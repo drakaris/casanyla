@@ -30,7 +30,7 @@ var port = process.env.PORT || 3000;
  * CORS Variables *
  *****************/
 var corsOptions = {
-  origin: 'http://localhost:8080',
+  origin: true,
   credentials: true
 };
 
