@@ -88,6 +88,7 @@ router.post('/', function(req, res) {
 
 router.put('/:userId', function(req, res) {
   // Route modifies/updates a user in DB
+
   User.findOneAndUpdate({
     _id: req.params.userId
   }, req.body, {
