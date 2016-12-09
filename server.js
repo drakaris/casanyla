@@ -30,14 +30,14 @@ var port = process.env.PORT || 3000;
  * CORS Variables *
  *****************/
 var corsOptions = {
-  origin: true
+  origin: 'casanyla.com'
 };
 
 /**********************
  * Application Config *
  *********************/
 app.use(morgan('dev'));
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -55,6 +55,12 @@ app.use(session({
   store: store,
   ttl: 9999
 }));
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  next();
+});
 
 /******************
  * Event Handlers *
