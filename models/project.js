@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var projectSchema = new Schema({
   name: {
     type: String,
+    trim: true,
     required: true
   },
   owner: {
@@ -17,6 +18,7 @@ var projectSchema = new Schema({
   },
   address: {
     type: String,
+    trim: true,
     required: true
   },
   designer: {
@@ -32,13 +34,18 @@ var projectSchema = new Schema({
   milestones: [{
     name: {
       type: String,
+      trim: true,
       required: true
     },
     deadline: {
       type: Date,
-      required: true
+      required: true,
+      default: new Date(+new Date() + 7 * 24 * 60 * 60 * 1000)
     },
-    content: String,
+    content: {
+      type: String,
+      trim: true,
+    },
     updated: {
       type: Date,
       default: Date.now,

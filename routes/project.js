@@ -31,7 +31,7 @@ router.get('/list', function(req, res) {
 
 router.get('/:projectId', function(req, res) {
   // Router returns specific user from DB
-  Project.find({
+  Project.findOne({
       _id: req.params.projectId
     })
     .populate('owner', '_id name')
@@ -74,6 +74,27 @@ router.post('/', function(req, res) {
         }
       });
     }
+  });
+});
+
+router.put('/:projectId', function(req, res) {
+  // Route modifies/updates a project in DB
+  Project.findOneAndUpdate({
+    _id: req.params.projectId
+  }, req.body, {
+    upsert: false
+  }, function(err, doc) {
+    if (err) throw err;
+    res.send(doc);
+  });
+});
+
+router.delete('/:projectId', function(req, res) {
+  Project.find({
+    _id: req.params.projectId
+  }).remove().exec(function(err, removed) {
+    if (err) throw err;
+    res.send(removed);
   });
 });
 

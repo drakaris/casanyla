@@ -37,6 +37,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    maxAge: null
+  },
   secret: 'casanyla@123',
   saveUninitialized: true,
   resave: false,
