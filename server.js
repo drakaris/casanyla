@@ -56,8 +56,6 @@ app.use(session({
   ttl: 9999
 }));
 
-app.options('*', cors());
-
 app.use(function(req, res, next) {
   // var oneof = false;
   // res.header('Access-Control-Allow-Credentials', true);
