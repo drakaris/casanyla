@@ -46,7 +46,7 @@ app.use(cookieParser());
 app.use(session({
   cookie: {
     path: '/',
-    httpOnly: true,
+    httpOnly: false,
     maxAge: null
   },
   secret: 'casanyla@123',
