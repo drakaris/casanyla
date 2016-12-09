@@ -26,11 +26,18 @@ var store = new mongoStore({
 var app = express();
 var port = process.env.PORT || 3000;
 
+/******************
+ * CORS Variables *
+ *****************/
+var corsOptions = {
+  origin: true
+};
+
 /**********************
  * Application Config *
  *********************/
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
