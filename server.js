@@ -39,7 +39,6 @@ app.use(cookieParser());
 app.use(session({
   cookie: {
     path: '/',
-    domain: 'casanyla.com',
     httpOnly: false,
     maxAge: null
   },
