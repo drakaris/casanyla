@@ -37,7 +37,7 @@ var corsOptions = {
  * Application Config *
  *********************/
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -58,37 +58,37 @@ app.use(session({
 
 app.options('*', cors());
 
-// app.use(function(req, res, next) {
-//   // var oneof = false;
-//   // res.header('Access-Control-Allow-Credentials', true);
-//   // if (req.headers.origin) { //req.headers.origin.match(/whateverDomainYouWantToWhitelist/g) ) {
-//   //   res.header('Access-Control-Allow-Origin', 'http://casanyla.com');
-//   //   oneof = true;
-//   // }
-//   // if (req.headers['access-control-request-method']) {
-//   //   res.header('Access-Control-Allow-Methods', req.headers['access-control-request-method']);
-//   //   oneof = true;
-//   // }
-//   // if (req.headers['access-control-request-headers']) {
-//   //   res.header('Access-Control-Allow-Headers', req.headers['access-control-request-headers']);
-//   //   oneof = true;
-//   // }
-//   // if (oneof) {
-//   //   res.header('Access-Control-Max-Age', 60 * 60 * 24 * 365);
-//   // }
-//
-//   // res.header('Access-Control-Allow-Credentials', true);
-//   // res.header('Access-Control-Allow-Origin', req.headers.origin);
-//   // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   // res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-//
-//   // intercept OPTIONS method
-//   // if (req.method == 'OPTIONS') {
-//   //   res.sendStatus(200);
-//   // } else {
-//   //   next();
-//   // }
-// });
+app.use(function(req, res, next) {
+  // var oneof = false;
+  // res.header('Access-Control-Allow-Credentials', true);
+  // if (req.headers.origin) { //req.headers.origin.match(/whateverDomainYouWantToWhitelist/g) ) {
+  //   res.header('Access-Control-Allow-Origin', 'http://casanyla.com');
+  //   oneof = true;
+  // }
+  // if (req.headers['access-control-request-method']) {
+  //   res.header('Access-Control-Allow-Methods', req.headers['access-control-request-method']);
+  //   oneof = true;
+  // }
+  // if (req.headers['access-control-request-headers']) {
+  //   res.header('Access-Control-Allow-Headers', req.headers['access-control-request-headers']);
+  //   oneof = true;
+  // }
+  // if (oneof) {
+  //   res.header('Access-Control-Max-Age', 60 * 60 * 24 * 365);
+  // }
+
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+
+  // intercept OPTIONS method
+  if (req.method == 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 /******************
  * Event Handlers *
