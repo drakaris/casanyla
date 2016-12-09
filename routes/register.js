@@ -5,7 +5,7 @@ var router = express.Router();
 var User = require('../models/user');
 const saltRounds = 10;
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   User.find({
     email: req.body.email
   }, function(err, docs) {
