@@ -65,6 +65,8 @@ app.use('/', require('./routes/root'));
 app.use('/setup', require('./routes/setup'));
 app.use('/login', require('./routes/login'));
 app.use('/logout', require('./routes/logout'));
+app.use('/user', require('./routes/user'));
+app.use('/project', require('./routes/project'));
 
 // Start Server
 app.listen(port, function() {
