@@ -14,8 +14,8 @@ router.get('/', function(req, res) {
     _id: req.session.userId
   }, function(err, doc) {
     if (err) {
-      console.log(err);
-      res.sendStatus(500);
+      res.send(err);
+      // res.sendStatus(500);
     } else {
       res.send(doc);
     }
@@ -43,7 +43,7 @@ router.use(function(req, res, next) {
   if (req.session.role == 'admin') {
     next();
   } else {
-    res.sendStatus(403);
+    // res.sendStatus(403);
   }
 });
 

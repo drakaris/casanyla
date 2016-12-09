@@ -24,8 +24,11 @@ router.get('/list', function(req, res) {
     .populate('designer', '_id name')
     .populate('createdBy', '_id name')
     .exec(function(err, docs) {
-      if (err) throw err;
-      res.send(docs);
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(docs);
+      }
     });
 });
 
@@ -38,8 +41,11 @@ router.get('/:projectId', function(req, res) {
     .populate('designer', '_id name')
     .populate('createdBy', '_id name')
     .exec(function(err, docs) {
-      if (err) throw err;
-      res.send(docs);
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(docs);
+      }
     });
 });
 
@@ -49,7 +55,9 @@ router.post('/', function(req, res) {
     _id: req.body.owner
   }, function(err, doc) {
     // Verify owner is client
-    if (err) throw err;
+    if (err) {
+      res.send(err);
+    }
     if (doc.role != 'client') {
       res.send('Owner is not a client');
       return;
@@ -58,7 +66,9 @@ router.post('/', function(req, res) {
         _id: req.body.designer
       }, function(err, doc) {
         // Verify authenticity of designer
-        if (err) throw err;
+        if (err) {
+          res.send(err);
+        }
         if (doc.role != 'designer') {
           res.send('Specify valid designer');
           return;
@@ -68,8 +78,11 @@ router.post('/', function(req, res) {
           data.createdBy = req.session.userId;
           var newProject = new Project(data);
           newProject.save(function(err, result) {
-            if (err) throw err;
-            res.send(result);
+            if (err) {
+              res.send(err);
+            } else {
+              res.send(result);
+            }
           });
         }
       });
@@ -84,8 +97,11 @@ router.put('/:projectId', function(req, res) {
   }, req.body, {
     upsert: false
   }, function(err, doc) {
-    if (err) throw err;
-    res.send(doc);
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
   });
 });
 
@@ -93,8 +109,11 @@ router.delete('/:projectId', function(req, res) {
   Project.find({
     _id: req.params.projectId
   }).remove().exec(function(err, removed) {
-    if (err) throw err;
-    res.send(removed);
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(removed);
+    }
   });
 });
 
