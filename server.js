@@ -83,6 +83,7 @@ app.use('/user', require('./routes/user'));
 app.use('/project', require('./routes/project'));
 app.use('/style', require('./routes/style'));
 app.use('/question', require('./routes/question'));
+app.use('/quiz', require('./routes/quiz'));
 
 // Start Server
 app.listen(port, function() {

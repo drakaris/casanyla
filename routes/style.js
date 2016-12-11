@@ -8,13 +8,25 @@ var Style = require('../models/style');
  ********************/
 router.get('/', function(req, res) {
   // PARAMS : None
-  Style.find({}, function(err, docs) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(docs);
-    }
-  });
+  if (req.query.active == 'false' && req.session.role == 'admin') {
+    Style.find({}, function(err, docs) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(docs);
+      }
+    });
+  } else {
+    Style.find({
+      'active': true
+    }, function(err, docs) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(docs);
+      }
+    });
+  }
 });
 
 /**********************

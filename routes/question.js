@@ -8,14 +8,26 @@ var Question = require('../models/question');
  ********************/
 router.get('/', function(req, res) {
   // Returns all questions
-  // PARAMS : No params
-  Question.find({}, function(err, docs) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(docs);
-    }
-  });
+  // PARAMS : /question?active=false [OPTIONAL] --> toggle disabled questions
+  if (req.query.active == 'false' && req.session.role == 'admin') {
+    Question.find({}, function(err, docs) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(docs);
+      }
+    });
+  } else {
+    Question.find({
+      'active': true
+    }, function(err, docs) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(docs);
+      }
+    });
+  }
   // Question.find({})
   //   .populate('options.relatedStyles', '_id name')
   //   .exec(function(err, docs) {

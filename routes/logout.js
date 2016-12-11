@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.use(function(req, res, next) {
   console.log(req.session);
-  if (req.cookies['connect.sid']) {
+  if (req.session.userId) {
     console.log(req.sessionID);
     console.log(req.cookies);
     next();
