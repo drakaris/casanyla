@@ -22,13 +22,13 @@ var questionSchema = new mongoose.Schema({
     relatedStyles: [{
       type: Schema.Types.ObjectId,
       ref: 'Style'
-    }]
+    }],
+    answered: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
   }],
-  answered: {
-    type: Boolean,
-    required: true,
-    default: false
-  },
   active: {
     type: Boolean,
     required: true,
