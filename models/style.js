@@ -18,6 +18,11 @@ var styleSchema = new mongoose.Schema({
       trim: true,
       required: true
     },
+    path: {
+      type: String,
+      trim: true,
+      required: true
+    },
     active: {
       type: Boolean,
       required: true,
