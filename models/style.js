@@ -26,7 +26,12 @@ var styleSchema = new mongoose.Schema({
       type: Number,
       default: 0
     }
-  }]
+  }],
+  active: {
+    type: Boolean,
+    required: true,
+    default: false
+  }
 });
 
 var Style = mongoose.model('Style', styleSchema);
