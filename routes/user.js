@@ -43,7 +43,7 @@ router.use(function(req, res, next) {
   if (req.session.role == 'admin') {
     next();
   } else {
-    // res.sendStatus(403);
+    res.sendStatus(403);
   }
 });
 
