@@ -20,7 +20,8 @@ var styleSchema = new mongoose.Schema({
     },
     active: {
       type: Boolean,
-      required: true
+      required: true,
+      default: false
     },
     order: {
       type: Number,
