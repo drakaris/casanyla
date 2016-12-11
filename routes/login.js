@@ -5,7 +5,7 @@ var router = express.Router();
 var User = require('../models/user');
 
 router.use(function(req, res, next) {
-  if (req.cookies['connect.sid'] && req.session.userId) {
+  if (req.session.userId) {
     console.log('Existing Session: ' + req.session.id);
     console.log(req.session);
     res.send('Already logged in');

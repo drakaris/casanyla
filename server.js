@@ -30,7 +30,7 @@ var port = process.env.PORT || 3000;
  * CORS Variables *
  *****************/
 var corsOptions = {
-  origin: true,
+  origin: /casanyla\.com|localhost/,
   credentials: true
 };
 
