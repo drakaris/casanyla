@@ -24,6 +24,11 @@ var questionSchema = new mongoose.Schema({
       ref: 'Style'
     }]
   }],
+  answered: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   active: {
     type: Boolean,
     required: true,
