@@ -31,6 +31,10 @@ var styleSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: false
+  },
+  order: {
+    type: Number,
+    default: 0
   }
 });
 
