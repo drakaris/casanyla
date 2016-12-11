@@ -14,7 +14,7 @@ router.use(function(req, res, next) {
   }
 });
 
-router.delete('/', function(req, res) {
+router.post('/', function(req, res) {
   res.clearCookie('email');
   res.clearCookie('name');
   res.clearCookie('session');

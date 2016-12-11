@@ -18,7 +18,7 @@ var styleSchema = new mongoose.Schema({
       trim: true,
       required: true
     },
-    path: {
+    file: {
       type: String,
       trim: true,
       required: true

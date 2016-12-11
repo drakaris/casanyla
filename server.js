@@ -82,6 +82,7 @@ app.use('/logout', require('./routes/logout'));
 app.use('/user', require('./routes/user'));
 app.use('/project', require('./routes/project'));
 app.use('/style', require('./routes/style'));
+app.use('/question', require('./routes/question'));
 
 // Start Server
 app.listen(port, function() {

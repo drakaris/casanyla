@@ -31,7 +31,7 @@ var questionSchema = new mongoose.Schema({
   }
 });
 
-projectSchema.methods.toJSON = function() {
+questionSchema.methods.toJSON = function() {
   var obj = this.toObject();
   delete obj.__v;
   delete obj.createdAt;
