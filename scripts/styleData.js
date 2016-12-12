@@ -7,7 +7,7 @@ db.once('open', function() {
   console.log('Established connection to MongoDB');
 });
 
-var Style = require('./models/style');
+var Style = require('../models/style');
 
 var metadata = {
   'Soho Sophistication': {
