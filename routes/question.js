@@ -68,6 +68,7 @@ router.put('/:questionId', function(req, res) {
   // Updates existing style in DB
   // PARAMS : MongoID as part of URL
   // PARAMS : Update object with new data
+  console.log(req.body);
   Question.findOneAndUpdate({
     _id: req.params.questionId
   }, req.body, {
